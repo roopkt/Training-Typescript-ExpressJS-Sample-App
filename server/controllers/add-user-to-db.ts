@@ -1,3 +1,14 @@
+import { db } from '../db';
+import { log } from '../logger';
+
 export const addUserToDb = (req: any, res: any) => {
-  res.send('user added to db');
+  const user = req.body;
+
+  log(`fetching user from request`, user);
+
+  log(`adding user to db`, user);
+  db.userList.push(user); // replace with mongodb.
+
+  log(`sending added user to client`, user);
+  res.json(user);
 };
